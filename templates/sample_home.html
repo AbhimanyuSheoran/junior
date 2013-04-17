@@ -1,0 +1,52 @@
+<html>
+	<head>
+		<title>home app</title>
+		<style type="text/css">
+			body {
+				font-size:13px;
+			}
+			label {
+				display:inline-block;
+				width:170px;
+			}
+			label.sml {
+				width:75px;
+			}
+			fieldset{
+				background-color: #FAFAFA;
+			}
+		</style>
+	</head>
+	<body>
+		<b>Basic Home App</b>
+		<hr/>
+		<fieldset>
+			<legend>record a message</legend>
+			<form  method='POST' action='/' >
+			{% csrf_token %}
+				<p>
+					<label>Message : </label>
+					<input type='text' name='message'/>
+					<input type='submit' value='Store'/>
+				</p>
+		</form>
+		</fieldset>
+		<fieldset>
+			<legend>previous messages</legend>
+				<p>
+				
+{% if Posts %}
+    <ul>
+        {% for post in Posts %}
+      <p>{{ post }}</p>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No previous messages stored.</p>
+{% endif %}
+
+				</p>
+		</form>
+		</fieldset>
+	</body>
+</html>
